@@ -1,0 +1,69 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+ 
+
+
+<ul id="example">
+  <li v-for="item in items" v-bind:key="item.index">
+  {{item.id}} 
+</li>
+</ul>
+
+
+<ul id="example1">
+  <li v-for="item in items" :key="item.key">
+  {{item.id}} 
+</li>
+</ul>
+
+<ul id="v_for_object" class="demo">
+  <li v-for='(value,key,index) in object'>
+      {{index}}.{{key}}:{{value}}
+  </li>
+</ul>
+
+</body>
+
+<script>
+var example = new Vue({
+  el:'#example',
+  data:{
+    items:[
+    {id:3},
+    {id:2},
+    {id:1}
+    ]
+  }
+});
+
+var example1 = new Vue({
+  el:'#example1',
+  data:{
+    items:[
+    {id:3},
+    {id:2},
+    {id:1}
+    ]
+  }
+});
+example1.items.push({ id: 'Baz' })
+example.items.push({ id: 'Baz' })
+example.items.push({ id: 'Baz1' })
+example1.items.push({ id: 0 })
+var v_for_object=new Vue({
+  el:'#v_for_object',
+  data:{
+    object:{
+      firstName:'John',
+      lastName:'Doe',
+      age:30
+    }
+  }
+})
+</script>
+</html>

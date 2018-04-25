@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+
+</head>
+<body>
+    <h1 v-show='ok' id="show">
+        hellow!  
+    </h1>
+</body>
+<script>
+    var show = new Vue({
+        el:'#show',
+        data:{
+            ok:false
+        }
+    })
+</script>
+</html>

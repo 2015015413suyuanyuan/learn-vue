@@ -1,0 +1,72 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+
+</head>
+<body>
+
+    <div id="app">
+        <p v-if='seen'>现在你看到我了</p>
+        <template v-if='ok'>
+            <h1>练习</h1>
+        </template>
+    </div>
+
+    <div id="app2">
+        <div v-if="type=== 'A'">
+            A
+          </div>
+          <div v-else-if="type === 'B'">
+            B
+          </div>
+          <div v-else-if="type === 'C'">
+            C
+          </div>
+          <div v-else>
+            Not A/B/C
+          </div>
+          
+    </div>
+    <div id="app1">
+        <h1 v-if='ok'> yes</h1>
+      </div>
+      
+      <div id="test">
+        <div v-if="1 > 0.5">
+           " Math.random > 0.5 "
+        </div>
+        <div v-else>
+            " Math.random <= 0.5 "
+        </div>
+
+
+</div>
+</body>
+<script>
+    var app1 = new Vue({
+        el:'#app1',
+        data:{
+            ok:true
+        }
+    });
+    var test = new Vue({
+        el:'#test',
+    });
+    var app2 = new Vue({
+        el:'#app2',
+        data:{
+            type:'B'
+        }
+    });
+    var app3 = new Vue({
+        el:'#app',
+        data:{
+            seen:false,
+            ok:true
+        }
+    });
+
+    </script>
+</html>
