@@ -1,0 +1,49 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>内联处理器中的方法</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+ <p>
+   除了直接绑定到一个方法，也可以在内联JavaScript语句中调用方法
+ </p>
+<div id="example">
+  <button v-on:click="say('hi')"> say hi</button>
+  <button v-on:click="say('what')">say what</button>
+
+</div>
+
+<div  id="id1">
+    <p>
+        有时也需要在内联语句处理器中访问原始的DOM事件，可以用特殊变量$event把它传入方法：
+    </p>
+    <button v-on:click="warn('Form cannot be submitted yet.', $event)">
+        Submit
+    </button>
+</div>
+
+</body>
+
+<script>
+var example = new Vue({
+  el:'#example',
+  methods:{
+    say:function(message){
+      alert(message);
+    }
+  }
+});
+var example1 = new Vue({
+  el:'#id1',
+  methods: {
+  warn: function (message, event) {
+    // 现在我们可以访问原生事件对象
+    if (event) event.preventDefault()
+    alert(message)
+  }
+}
+});
+</script>
+</html>

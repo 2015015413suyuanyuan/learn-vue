@@ -1,0 +1,35 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>事件处理方法</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+ <p>
+   v-on可以接受一个需要调用的方法名称。
+ </p>
+<div id="example">
+  <button v-on:click='greet'>greet</button>
+</div>
+
+</body>
+
+<script>
+var example = new Vue({
+  el:'#example',
+  data:{
+    name:'vue.js'
+  },
+  methods:{
+    greet:function(event){
+      alert('hello' + this.name +'!');
+      if(event){
+          alert(event.target.tagName);
+      }
+    }
+  }
+});
+example2.greet();
+</script>
+</html>

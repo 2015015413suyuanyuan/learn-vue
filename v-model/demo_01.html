@@ -1,0 +1,170 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+ 
+<div id="example">
+  <h4>文本</h4>
+  <hr>
+  <input v-model='message' placeholder="编辑我">
+  <p>消息是：{{message}}</p>
+</div>
+
+<div id="id1">
+  <h4>多行文本</h4>
+  <hr>
+  <p style="white-space: pre-line;">{{message}}</p>
+  <br>
+  <textarea v-model="message" placeholder="请添加多行"></textarea>
+  <p>在文本区域插值（textarea）并不会生效，应用v-model来代替</p>
+  <h4>复选框</h4>
+  <hr>
+  <input type="checkbox" id="checkbox" v-model="checked">
+  <label for="checkbox">{{ checked }}</label>
+</div>
+
+<div id="id3">
+    <h4>多个复选框，绑定到同一数组</h4>
+    <hr>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames }}</span>
+</div>
+
+<div id="id4">
+  <h4>单选按钮</h4>
+  <hr>
+  <input type="radio" id="one" value="one" v-model="picked">
+  <label for="one">one</label>
+  <br>
+  <input type="radio" id="two" value="two" v-model="picked">
+  <label for="two">two</label>
+  <br>
+  <span>picked:{{picked}}</span>
+</div>
+
+<div id="id5">
+  <select v-model="selected">
+    <option value="" disabled>请选择</option>
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+  </select>
+  <span>selected:{{selected}}</span>
+</div>
+
+<div id="id6">
+  <h4>多选时（绑定到一个数组）：</h4>
+  <hr>
+  <select v-model="selected" multiple style="width:50px;">
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+  </select>
+  <br>
+  <span>selected:{{selected}}</span>
+</div>
+
+<div id="id7">
+  <h4>用v-for渲染动态选项</h4>
+  <hr>
+  <select v-model="selected">
+    <option v-for='option in options' v-bind:value="option.value">
+      {{option.text}}
+    </option>
+  </select>
+  <span>selected:{{selected}}</span>
+</div>
+
+<h3>值绑定</h3>
+<hr>
+<div id="id8">
+<input type="radio" v-model="picked" value="a">a
+<input type="checkbox" v-model="toggle">
+<select v-model="selected">
+  <option value="abc">
+    ABC
+  </option>
+</select>
+</div>
+<h4>复选框</h4>
+<hr>
+<div id="id9">
+    <input v-model.number="age" type="number">
+</div>
+</body>
+
+<script>
+  var id9 = new Vue({
+  el:'#id9',
+  data:{
+    age:'fgs'
+  }
+});
+var id8 = new Vue({
+  el:'#id8',
+  data:{
+    picked:true,
+    toggle:true,
+    selected:true
+  }
+});
+var id7 = new Vue({
+  el:'#id7',
+  data:{
+    selected:'A',
+    options:[
+      {text:'one',value:'A'},
+      {text:'two',value:'B'},
+      {text:'three',value:'C'},
+    ]
+  }
+})
+var id6 = new Vue({
+  el:'#id6',
+  data:{
+    selected:[]
+  }
+})
+var id5= new Vue({
+  el:'#id5',
+  data:{
+    selected:''
+  }
+})
+var id4 = new Vue({
+  el:'#id4',
+  data:{
+    picked:''
+  }
+})
+var id3 = new Vue({
+  el:'#id3',
+  data:{
+ 
+    checkedNames:[]
+  }
+})
+var id1=new Vue({
+  el:'#id1',
+  data:{
+    message:'',
+    checked:false
+  }
+})
+var example = new Vue({
+  el:'#example',
+  data:{
+    message:''
+  }
+});
+</script>
+</html>
