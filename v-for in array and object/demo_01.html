@@ -1,0 +1,135 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <h4>为object动态增加属性</h4>
+ <ul id="demo">
+   <li v-for='(value,key,index) in object'>
+    {{index}} -- {{key}} -- {{value}}
+   </li>
+ </ul>
+ <h4>显示过滤、排序结果,可以创建返回过滤或排序数组的计算属性</h4>
+<ul id="demo1">
+  <li v-for='n in evenNumbers'>
+    {{n}}
+  </li>
+</ul>
+<h4>在计算属性不适用的情况下(例如，在嵌套v-for循环中，你可以使用一个method方法：)</h4>
+<ul id="demo2">
+  <li v-for='n in even(numbers)'>
+    {{n}}
+  </li>
+</ul>
+<div id="demo3">
+    <div>
+        <h4>一段取值范围的 v- for </h4>
+        <span v-for='n in 10'>{{n}}</span>
+      </div>
+      <div>
+        <h4>v-for on a templage</h4>
+        <ul>
+          <template v-for=' (item,index) in items'>
+            <li>{{item.msg}}</li>
+            <li>{{index}}</li>
+          </template>
+        </ul>
+      </div>
+</div>
+<div id="demo4">
+  <h4>v-for with v-if</h4>
+  <p>
+    当它们处于同一结点，v-for的优先级比v-if更高，这意味着v-if将分别重复运行于每个v-for循环中。当你想为仅有的一些项渲染节点时，这种优先级的机制会十分有用，如下：
+  </p>
+  <li v-for='item in todos' v-if='!item.isComplete'>
+    {{item.todo}}
+  </li>
+  <p>有条件地跳过循环的执行，那么可以将v-if置于外层元素上，如</p>
+  <ul v-if='todos.length'>
+    <li v-for='item in todos'>
+      {{item.todo}}
+    </li>
+  </ul>
+</div>
+</body>
+
+<script>
+let vm4 = new Vue({
+  el:'#demo4',
+  data:{
+    todos:[
+      {
+        todo:"eat",
+        isComplete:false
+      },
+      {
+        todo:"drink",
+        isComplete:true
+      },
+      
+      {
+        todo:"swim",
+        isComplete:false
+      },
+      {
+        todo:"sing",
+        isComplete:true
+      }
+    ]
+  }
+})
+let vm3 = new Vue({
+  el:'#demo3',
+  data:{
+    items:[{
+      msg:'123'
+    },{
+      msg:'456'
+    }]
+  }
+});
+var vm = new Vue({
+  el:'#demo',
+  data:{
+    object:{
+      a:'1'
+    }
+  }
+});
+Vue.set(vm.object,'age',27);
+vm.$set(vm.object,'love','sing');
+vm.object = Object.assign({},vm.object,{
+  'love1':'movie',
+  'love2':'cook'
+});
+
+let vm1=new Vue({
+  el:'#demo1',
+  data: {
+  numbers: [ 10, 20, 30, 4, 5 ,6,7,8,9,10]
+},
+computed: {
+  evenNumbers: function () {
+    return this.numbers.filter(function (number) {
+      return number % 2 === 0
+    })
+  }
+}
+});
+let vm2 = new Vue({
+  el:'#demo2',
+  data:{
+    numbers:[1,2,3,4,5,6,7,8,9,10]
+  },
+  methods:{
+    even:function (numbers){
+      return numbers.filter(function(number){
+        return number % 2 === 0
+      })
+    }
+  }
+})
+</script>
+</html>
