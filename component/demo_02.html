@@ -1,0 +1,23 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>使用组件：全局注册</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+<div id="example">
+  <mycomponent></mycomponent>
+</div>
+</body>
+
+<script>
+Vue.component('mycomponent',{
+  template:'<div>a custom component!</div>'
+});
+new Vue({
+  el:'#example'
+});
+</script>
+</html>

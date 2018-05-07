@@ -1,0 +1,34 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>使用组件：局部注册</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+<div id="example">
+  <parent></parent>
+</div>
+</body>
+
+<script>
+var Child = Vue.extend({
+    template: '<div>Child</div>'
+});
+// 为什么 Child 不显示?
+var Parent = Vue.extend({
+    template: `<div>Parent:<child></child></div>`,//你的子组件得引到父模版里来
+    components: {
+        // child 只能用在父组件模版内
+        'child': Child
+    }
+});
+var vm2 = new Vue({
+    el: '#example',
+    components: {
+        'parent': Parent
+    }
+});
+</script>
+</html>

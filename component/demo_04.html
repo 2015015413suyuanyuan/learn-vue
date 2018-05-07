@@ -1,0 +1,28 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DOM模板解析注意事项--使用is</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+ 
+<div id="example">
+  <select>
+    <option is='optioncomp'></option>
+  </select>
+</div>
+
+</body>
+
+<script>
+var example = new Vue({
+  el:'#example',
+  components:{
+    'optioncomp':{
+      template:'<option>a</option>'
+    }
+  }
+});
+</script>
+</html>

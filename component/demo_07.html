@@ -1,0 +1,35 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>prop</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+ 
+<div id="example">
+    <ol>
+        <child  v-for='item in sites' v-bind:todo='item'></child>
+    </ol>
+</div>
+
+</body>
+
+<script>
+Vue.component('child',{
+  props:['todo'],
+  template:'<li>{{todo.text}}</li>'
+});
+var example = new Vue({
+  el:'#example',
+  data:{
+     sites:[
+         {text:'足球'},
+          {text:'篮球'},
+          {'text':'乒乓球'}
+     ]
+  }
+
+});
+</script>
+</html>

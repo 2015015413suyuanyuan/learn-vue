@@ -1,0 +1,31 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DOM模板解析注意事项--使用"text/x-template"</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+ 
+<div id="example">
+  <select>
+    <option is='optioncomp'></option>
+  </select>
+  <script type="x-template" id="optioncompTemp">
+    <option>a<option>
+  </script>
+</div>
+
+</body>
+
+<script>
+var example = new Vue({
+  el:'#example',
+  components:{
+    'optioncomp':{
+      template:'#optioncompTemp'
+    }
+  }
+});
+</script>
+</html>

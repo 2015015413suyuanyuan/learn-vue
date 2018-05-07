@@ -1,0 +1,29 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>prop</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="app1">
+  <app1 v-bind="todo"></app1>
+</div>
+</body>
+
+<script>
+Vue.component('app1',{
+  template:`<div><span>the first value is {{first}} , the second value is {{second}}.</span></div>`,
+  props:['first','second']
+});
+var app1 = new Vue({
+  el:'#app1',
+  data:{
+    todo:{
+      first:'hello 1',
+      second:'hello 2'
+    }
+  }
+})
+</script>
+</html>

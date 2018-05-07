@@ -1,0 +1,48 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>自定义事件</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+<div id="example" class="demo">
+  <p v-for="msg in messages">{{msg}}</p>
+  <buttonmessage v-on:message="handlemessage"></buttonmessage>
+</div>
+</body>
+
+<script>
+Vue.component('buttonmessage',{
+    template:`
+    <div>
+    <input type="text" v-model="message"/>
+    <button v-on:click="handlesendmessage">send</button>
+
+    </div>
+    `,
+    data:function(){
+        return {
+            message:'测试信息'
+        }
+    },
+    methods:{
+        handlesendmessage:function(){
+            this.$emit('message',{message:this.message})
+        }
+    }
+})
+new Vue({
+  el:'#example',
+  data:{
+      messages:[]
+  },
+  methods:{
+      handlemessage:function(payload){
+          this.messages.push(payload.message);
+      }
+  }
+});
+</script>
+</html>

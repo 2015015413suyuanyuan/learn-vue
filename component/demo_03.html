@@ -1,0 +1,42 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>全局注册 局部注册</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+
+<div id="app-1">
+  <hr>
+  <global></global>
+  <local></local>
+  <hr>
+</div>
+<div id="app-2">
+  <hr>
+  <global></global>
+  <local></local>
+  <hr>
+</div>
+</body>
+
+<script>
+Vue.component('global',{
+  template:'<div>这是一个全局注册组件</div>'
+});
+new Vue({
+  el:'#app-1'
+});
+var child = {
+  template:'<div>这是一个局部注册组件</div>'
+}
+new Vue({
+  el:'#app-2',
+  components:{
+    'local':child
+  }
+})
+</script>
+</html>

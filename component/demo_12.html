@@ -1,0 +1,67 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>单向数据流</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h1></h1>
+<p>
+    prop是单向绑定的：当父组件的属性变化时，将传导给子组件，但是反过来不会
+    这是为了防止子组件无意间修改了父组件的状态，来避免应用的数据流
+    变得难以处理。
+    另外，每次父组件更新时，子组件所有的prop都会更新为最新值。
+    这意味着你不应该在子组件内部改变prop。如果你这么做了，vue会在控制台给出警告。
+    在两种情况下，我们很容易忍不住想去修改prop中数据：
+    1.prop作为初始值传入后，子组件想把它当做局部数据来用。
+    2.prop作为原始数据传入，由子组件处理成其它数据输出。
+    对这两种情况，正确的应对方式是：
+    1.定义一个局部变量，并用prop的值初始化它。
+    2.定义一个计算属性，处理prop的值并返回。
+</p>
+
+<section id="app">
+    <custom :count='count'></custom>
+</section>
+</body>
+
+<script>
+Vue.component("custom-component", {
+            data() {
+                return {
+                    initCount: this.count
+                }
+            },
+            //与直接使用data不同的是这里添加选项参数计算属性`computed`
+            computed: {
+                initCount2() {
+                    return this.initCount;
+                }
+            },
+            props: ['count'],
+            template: `
+            <div>
+                <h1>一个自定义模版</h1>
+                <input type="button"  @click="changeCount" value="按钮"/>
+                <!--这里现在使用的是computed里的函数返回结果-->
+                {{initCount2}}
+            </div>`,
+            methods: {
+                changeCount() {
+                    this.initCount++
+                }
+            }
+        });
+
+
+new Vue({
+    el:'#app',
+    data(){
+        return {
+            count:0
+        }
+    }
+})
+</script>
+</html>
