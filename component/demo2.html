@@ -1,0 +1,49 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>通过事件向父组件发送消息</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+<div id="app">
+    <div :style="{fontSize:postFontSize +'em'}">
+        <blog-post
+        v-for='post in posts'
+        v-bind:key="post.id"
+        v-bind:post="post"
+        v-on:enlarge-text="postFontSize+=0.1"
+        >
+        </blog-post>
+    </div>
+
+</div>
+</body>
+
+<script>
+Vue.component('blog-post',{
+    props:['post'],
+    template:`
+    <div class="blog-post">
+        <h3>{{post.title}}</h3>
+        <button v-on:click="$emit('enlarge-text')">
+        Enlarge text
+        </button>
+        <div v-html="post.content"></div>
+    </div>
+    `
+});
+var vue = new Vue({
+    el:'#app',
+    data:{
+        posts:[
+            {id:1,title:'my journey with vue',content:'123'},
+            {id:2,title:'bogging with vue',content:'1234'},
+            {id:3,title:'why vue is so fun123',content:'12345'}
+        ],
+        postFontSize:1
+    }
+})
+</script>
+</html>

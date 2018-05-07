@@ -1,0 +1,61 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>组件基础--基本示例</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+
+<div id="app">
+
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+
+</div>
+<div id="app2">
+<h1>通过prop向子组件传递数据</h1>
+<blog-post title="My journey with Vue"></blog-post>
+<blog-post title="Blogging with Vue"></blog-post>
+<blog-post title="Why Vue is so fun"></blog-post>
+</div>
+<div id="app3">
+<hr>
+<h1>通过prop向子组件传递数据</h1>
+<blog-post v-for='post in posts' v-bind:key='post.id' v-bind:title='post.title'></blog-post>
+</div>
+</body>
+
+<script>
+Vue.component('button-counter', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+})
+var vue = new Vue({
+    el:'#app',
+
+});
+Vue.component('blog-post',{
+    props:['title'],
+    template:'<h3>{{title}}</h3>'
+});
+var vue1 = new Vue({
+    el:'#app2'
+});
+var vue2 = new Vue({
+    el:'#app3',
+    data:{
+        posts:[
+            {id:1,title:'my journey with vue'},
+            {id:2,title:'bogging with vue'},
+            {id:3,title:'why vue is so fun123'}
+        ]
+    }
+})
+</script>
+</html>
