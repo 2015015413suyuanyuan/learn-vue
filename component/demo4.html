@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>在组件上使用v-model</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+<div id="app">
+    <custom-input v-model="searchText">
+    </custom-input>
+    {{searchText}}
+</div>
+</body>
+
+<script>
+Vue.component('custom-input',{
+    props:['value'],
+    template:`
+    <input 
+    v-bind:value="value"
+    v-on:input="$emit('input',$event.target.value)"
+    >
+    `
+});
+var vue = new Vue({
+    el:'#app',
+    data: function () {
+    return {
+      searchText: 0
+    }
+  }
+})
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>通过插槽分发内容***</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+<div id="app">
+    <alert-box>
+        something bad happened
+    </alert-box>
+</div>
+</body>
+
+<script>
+Vue.component('alert-box',{
+    template:`
+    <div class="demo-alert-box">
+    <strong>Error!</strong>
+    <slot></slot>
+    </div>
+    `
+});
+var app  = new Vue({
+    el:'#app',
+})
+</script>
+</html>
