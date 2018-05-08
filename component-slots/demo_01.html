@@ -1,0 +1,33 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>使用组件：局部注册</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+<div id="app">
+   <navigation-link url="/profile">
+    your profile
+   </navigation-link>
+</div>
+</body>
+
+<script>
+Vue.component('navigation-link',{
+    template:`
+            <a
+        v-bind:href="url"
+        class="nav-link"
+        >
+        <slot></slot>
+        </a>     
+    `
+});
+var vue = new Vue({
+    el:'#app'
+})
+</script>
+
+</html>
