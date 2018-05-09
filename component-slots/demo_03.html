@@ -1,0 +1,50 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>具名插槽--直接用在普通元素上</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        a{
+            display: block;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <base-layout>
+        <h1 slot="header">这是header</h1>    
+        <p>这是默认的内容</p>
+        <p slot="footer">这是footer</p>
+    </base-layout>
+</div>
+
+</body>
+
+<script>
+Vue.component('base-layout',{
+    template:`
+<div class="container">
+    <header>
+        <slot name="header"></slot>
+    </header>
+    <main>
+        <slot></slot>
+    </main>
+    <footer>
+        <slot name="footer"></slot>
+    </footer>
+</div>    
+    `,
+    data:function(){
+       return{ url:"www.baidu.com"}
+    }
+});
+var vue = new Vue({
+    el:'#app'
+})
+</script>
+
+</html>

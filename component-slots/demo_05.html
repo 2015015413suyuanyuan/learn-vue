@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
 <head>
-    <title>插槽内容</title>
+    <title>插槽--编译作用域</title>
     <meta charset="utf-8">
     <script src="https://unpkg.com/vue"></script>
     <style>
@@ -15,7 +15,7 @@
 <body>
 <div id="app">
    <navigation-link url="">
-    your profile
+    我的名字： {{user.name}}
    </navigation-link>
 </div>
 </body>
@@ -31,11 +31,16 @@ Vue.component('navigation-link',{
         </a>     
     `,
     data:function(){
-       return{ url:"www.baidu.com"}
+       return{ url:"demo_01.html"}
     }
 });
 var vue = new Vue({
-    el:'#app'
+    el:'#app',
+    data:{
+        user:{
+            name:'苏媛媛'
+        }
+    }
 })
 </script>
 
