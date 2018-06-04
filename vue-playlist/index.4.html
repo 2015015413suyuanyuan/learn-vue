@@ -1,0 +1,28 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>vue入门</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <!--vue-app根容器 -->
+  <div id="vue-app">
+    <h1>双向数据绑定</h1>
+    <p>
+      input select textarea 
+    </p>
+    <label>姓名:</label>
+    <input type="text" v-on:keyup='logname' ref="name">
+    <p>{{name}}</p>
+    <label>年龄：</label>
+    <input type="text" v-on:keyup='logage' ref="age">
+    <p>{{age}}</p>
+    <label>日期：</label>
+    <input type="text" v-model="date" >
+    <p>{{date}}</p>
+  </div>
+</body>
+<script src="js/app.4.js"></script>
+</html>

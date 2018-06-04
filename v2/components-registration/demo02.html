@@ -1,0 +1,50 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>组件注册</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+
+</head>
+
+<body>
+<div id="demo">
+    <my-componnt-name></my-componnt-name>
+</div>
+</body>
+
+<script>
+//全局注册
+
+//短横线分隔命名
+Vue.component("my-component-name",{
+
+    // 使用时必须使用短横线分隔命名
+});
+//驼峰式命名
+Vue.component("MyComponentName",{
+    //使用的时候既可以用短横线分隔命名，也可以使用驼峰式命名
+})
+
+//局部注册
+
+var ComponentA={}
+var ComponentB={}
+var ComponentC={}
+
+new Vue({
+    el:"#app",
+    components:{
+        'component-a':ComponentA,
+        'component-b':ComponentB
+    }
+});
+//如果你希望局部注册的组件在别的组件中可用
+var ComponentC={
+    components:{
+        'component-a':ComponentA
+    }
+}
+</script>
+
+</html>

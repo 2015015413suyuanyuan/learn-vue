@@ -1,0 +1,31 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>todo list</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        a{
+            display: block;
+            background-color: red; 
+        }
+    </style>
+</head>
+
+<body>
+<div id="app1">
+<button v-on:click="counter +=1"> add 1</button>
+<p>the button above has been clicked {{counter}} times</p>
+</div>
+</body>
+
+<script>
+var app1 = new Vue({
+    el:"#app1",
+    data:{
+        counter:0
+    }
+})
+</script>
+
+</html>

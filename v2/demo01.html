@@ -1,0 +1,103 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>表单输入绑定</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        ul{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app1">
+    <input v-model="msg" placeholder="编辑我">
+    <p>消息是:{{msg}}</p>
+</div>
+<div id="app2">
+    <span>多行文本内容是：</span>
+    <p style="white-space: pre-line">{{msg}}</p>
+    <br>
+    <textarea v-model="msg" placeholder="添加文字"></textarea>
+</div>
+<div id="app3">
+    <input type="checkbox" id="jack" value="jack" v-model="names">
+    <label for="jack">jack</label>
+    <input type="checkbox" id="john" value="john" v-model="names">
+    <label for="john">john</label>
+    <input type="checkbox" id="mike" value="mike" v-model="names">
+    <label for="mike">mike</label>
+    <br>
+    <span>checked names:{{names}}</span>
+</div>
+<div id="app4">
+    <input type="radio" id="one" value="one" v-model="picked">
+    <label for="one">one</label>
+    <br>
+    <input type="radio" id="two" value="two" v-model="picked">
+    <label for="two">two</label>
+    <br>
+    <span>picked:{{picked}}</span>
+</div>
+<div id="app5">
+    <select v-model="selected">
+        <option value="" disabled>请选择</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>selected:{{selected}}</span>
+</div>
+<div id="app6">
+    <select v-model="selected" multiple style="width: 50px;">
+        <option>a</option>
+        <option>b</option>
+        <option>c</option>
+    </select>
+    <br>
+    <span>selected:{a{selected}}</span>
+</div>
+</body>
+
+<script>
+    var vue1=new Vue({
+        el:'#app1',
+        data:{
+            msg:''
+        }
+    })
+    var vue2 = new Vue({
+        el:"#app2",
+        data:{
+            msg:""
+        }
+    })
+    var vue3 = new Vue({
+        el:"#app3",
+        data:{
+            names:[]
+        }
+    })
+    var vue4=new Vue({
+        el:"#app4",
+        data:{
+            picked:""
+        }
+    })
+    var vue5= new Vue({
+        el:"#app5",
+        data:{
+            selected:''
+        }
+    })
+    var vue6 = new Vue({
+        el:"#app6",
+        data:{
+            selected:[]
+        }
+    })
+</script>
+
+</html>

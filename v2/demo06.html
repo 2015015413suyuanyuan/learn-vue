@@ -1,0 +1,108 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>插槽内容</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        ul{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+  <ul>
+      <li v-for="item in items">
+            {{item.message}}
+      </li>
+  </ul>
+
+</div>
+
+<ul id="app1">
+        <li v-for='(item,index) in arrs'>
+            {{parentMessage}} -  {{index}} - {{item.message}}
+        </li>
+      </ul>
+
+<ul id="app2">
+<li v-for="(key,value,index) in object">
+    {{key}}:{{value}} --- {{index}}
+</li>
+</ul>
+<div id="app3">
+    <li v-for="n in evenNumbers">{{n}}</li>
+</div>   
+<div id="app4">
+    <li v-for='n in even(numbers)'>{{n}}</li>
+    <span v-for="n in 10">{{n}}</span>
+</div>   
+
+
+</body>
+
+<script>
+var vue = new Vue({
+    el:'#app',
+    data:{
+        items:[
+            {message:'foo'},
+            {message:'bar'}
+        ]
+    }
+});
+
+var vue2= new Vue({
+    el:"#app1",
+    data:{
+        parentMessage:'parent',
+        arrs:[
+            {message:'foo'},
+            {message:'bar'}
+        ]
+    }
+})
+
+var vue3 = new Vue({
+    el:'#app2',
+    data:{
+        object:{
+            firstName:'john',
+            lastName:'doe',
+            age:30
+        }
+    }
+});
+
+var vue4 = new Vue({
+    el:"#app3",
+    data:{
+        numbers:[1,2,3,4,5,6,7,8,9,10]
+    },
+    computed:{
+        evenNumbers:function(){
+            return this.numbers.filter(function(number){
+                return number %2 ===0;
+            })
+        }
+    }
+})
+
+var vue5 = new Vue({
+    el:"#app4",
+    data:{
+        numbers:[1,2,3,4,5]
+    },
+    methods:{
+        even:function(numbers){
+            return numbers.filter(function(number){
+                return number % 2 === 0
+            })
+        }
+    }
+})
+</script>
+
+</html>

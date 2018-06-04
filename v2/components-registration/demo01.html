@@ -1,0 +1,42 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>插槽内容</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        a{
+            display: block;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+   <navigation-link url="">
+    your profile
+   </navigation-link>
+</div>
+</body>
+
+<script>
+Vue.component('navigation-link',{
+    template:`
+            <a
+        v-bind:href="url"
+        class="nav-link"
+        >
+        <slot></slot>
+        </a>     
+    `,
+    data:function(){
+       return{ url:"www.baidu.com"}
+    }
+});
+var vue = new Vue({
+    el:'#app'
+})
+</script>
+
+</html>

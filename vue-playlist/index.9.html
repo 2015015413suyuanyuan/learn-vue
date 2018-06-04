@@ -1,0 +1,24 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>vue入门</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <h1>初始化多个vue实例对象</h1>
+
+  <div id="vue-app-one">
+  {{title}}
+  <p>{{greet}}</p>
+  </div>
+
+  <div id="vue-app-two">
+    {{title}}
+    <p>{{greet}}</p>
+    <button v-on:click="changeTitle">change</button>
+  </div> 
+   
+</body>
+<script src="js/app.9.js"></script>
+</html>

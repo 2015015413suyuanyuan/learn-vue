@@ -1,0 +1,28 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>vue入门</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <!--vue-app根容器 -->
+  <div id="vue-app">
+    <h1>v-if条件</h1>
+
+    <button v-on:click="error = !error">toggle error</button>
+    <button  v-on:click="success = !success">toggle success</button>
+    <p v-if="error">网络连接错误:404</p>
+    <!-- 为假的时候 标签整个都不存在了 -->
+    <p v-else-if="success">网络连接成功：200</p>
+    <hr>
+    
+    <p v-show="error">网络连接错误:404</p>
+    <!-- 为假的时候 标签整个都不存在了 -->
+    <p v-show="success">网络连接成功：200</p>   
+
+  </div>
+</body>
+<script src="js/app.7.js"></script>
+</html>

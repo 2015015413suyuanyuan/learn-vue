@@ -1,0 +1,23 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>vue入门</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <!--vue-app根容器 -->
+  <div id="vue-app">
+    <h1>{{greet(time)}}</h1>
+    //需要花括号否则不执行
+    <h1>name:{{name}}</h1>
+    <p>job:{{job}}</p>
+    <p>属性绑定 绑定值 或者 标签</p>
+    <a v-bind:href="website">百度</a>
+    <input type="text" v-bind:value="name">
+    <p v-html='websiteTag'></p>
+  </div>
+</body>
+<script src="js/app.js"></script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>computed 计算属性</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="css/index.5.css">
+</head>
+<body>
+  <!--vue-app根容器 -->
+  <div id="vue-app">
+   <h1>computed 计算属性</h1>
+   <p>如果你当前变化的幅度比较大，搜索的时候，用计算属性 DOM真正有不同的时候</p>
+   <p>使用虚拟DOM，真正操作的是虚拟DOM 发现两者之间的不同。才会触发计算属性中的方法，而方法中的内容，不管怎样都会执行</p>
+   <p>只有耗时 大量的搜索 会使用计算属性，减少当前项目的支出，优化我们的项目</p>
+   <button v-on:click='a++'>add to a</button>
+   <button v-on:click='b++'>add to b</button>
+   <p>a -{{a}}</p>
+   <p>b -{{b}}</p>
+   <p>age +a ={{addToA}}</p>
+   <p>age +b = {{addToB}}</p>
+  </div>
+</body>
+<script src="js/app.5.js"></script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>todo list</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        a{
+            display: block;
+            background-color: red; 
+        }
+    </style>
+</head>
+
+<body>
+<div id="app1">
+<input v-model="message" placeholder="edit me">
+<p>message is :{{message}}</p>
+</div>
+</body>
+
+<script>
+var app1 = new Vue({
+    el:"#app1",
+    data:{
+       message:''
+    },
+    methods:{
+        greet:function(event){
+            alert('hello'+this.name+'!');
+            if(event){
+                alert(event.target.tagName)
+            }
+        },
+        warn:function(message,event){
+            if(event) event.preventDefault()
+            alert(message)
+        }
+    }
+})
+</script>
+
+</html>

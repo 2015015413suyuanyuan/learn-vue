@@ -1,0 +1,25 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>vue入门</title>
+    <meta charset="utf-8">
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="css/index.2.css">
+</head>
+<body>
+
+  <div id="canvas" v-on:mousemove="updateXY">
+      <h1>events</h1>
+      <button @click.once='jia(1)'>变大了</button>
+      <button v-on:click="jian(1)">变小了</button>
+      <button v-on:dblclick='jia(10)'>变大了</button>
+      <button v-on:dblclick="jian(10)">变小了</button>
+      <p>my age is {{age}}</p>
+    {{x}},
+    {{y}}-<span v-on:mousemove="stopMove">stop moving</span>
+    <span v-on:mousemove.stop="">停止移动</span>//阻止冒泡事件的执行
+    <a v-on:click.prevent="alert()" href="http://www.baidu.com">the new step</a>//阻止默认事件的修饰符
+  </div>
+</body>
+<script src="js/app.2.js"></script>
+</html>
